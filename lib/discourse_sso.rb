@@ -1,17 +1,5 @@
 module DiscourseSso
   module ControllerExtensions
-    def main_app
-      case Rails.env
-      when 'development'
-        'http://dday.dev'
-      when 'production'
-        'http://dday.it'
-      else
-        raise "no redirect url to main app. See discorse_sso gem for details."
-      end
-    end
-
-
     def self.included(klass)
       klass.append_before_filter :ensure_sso_login
     end
@@ -29,7 +17,6 @@ module DiscourseSso
       else
         reset_session
         cookies[:_t] = nil
-        redirect_to main_app
       end
     end
   end
