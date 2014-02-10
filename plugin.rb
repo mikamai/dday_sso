@@ -34,5 +34,5 @@ module DiscourseSso
 end
 
 ActiveSupport.on_load :action_controller do
-  include DiscourseSSO::ControllerExtensions
+  include DiscourseSso::ControllerExtensions
 end
