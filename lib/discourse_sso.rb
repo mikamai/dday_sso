@@ -12,7 +12,8 @@ module DiscourseSso
         unless current_user && current_user.id == cookie_user_id
           user = User.find cookie_user_id
           log_on_user(user)
-          redirect_to url_for # we need to "reload" the page, so the user sees that he's logged in
+          # TODO this doesn't look to be necessary
+          # redirect_to url_for # we need to "reload" the page, so the user sees that he's logged in
         end
       else
         reset_session
